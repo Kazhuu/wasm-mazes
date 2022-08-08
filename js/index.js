@@ -1,7 +1,7 @@
 import { Maze } from "../pkg";
 
-const heigth = 30;
-const width = 40;
+const heigth = 40;
+const width = 80;
 const maze = Maze.new(width, heigth);
 
 const pre = document.getElementById("pre");

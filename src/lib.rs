@@ -73,7 +73,7 @@ impl Maze {
         if *[true, false].choose(rng).unwrap() {
             self.walls_h[0][rng.gen_range(0..self.width)] = false;
         } else {
-            self.walls_v[rng.gen_range(0..self.height)][self.width - 1] = false;
+            self.walls_v[rng.gen_range(0..self.height)][self.width] = false;
         }
         if *[true, false].choose(rng).unwrap() {
             self.walls_h[self.height + 1][rng.gen_range(0..self.width)] = false;
