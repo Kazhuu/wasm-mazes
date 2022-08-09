@@ -2,12 +2,7 @@ use rand::prelude::*;
 use rand_chacha::ChaCha8Rng;
 use std::fmt;
 use wasm_bindgen::prelude::*;
-use web_sys::console;
 
-// When the `wee_alloc` feature is enabled, this uses `wee_alloc` as the global
-// allocator.
-//
-// If you don't want to use `wee_alloc`, you can safely delete this.
 #[cfg(feature = "wee_alloc")]
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
@@ -76,7 +71,7 @@ impl Maze {
             self.walls_v[rng.gen_range(0..self.height)][self.width] = false;
         }
         if *[true, false].choose(rng).unwrap() {
-            self.walls_h[self.height + 1][rng.gen_range(0..self.width)] = false;
+            self.walls_h[self.height][rng.gen_range(0..self.width)] = false;
         } else {
             self.walls_v[rng.gen_range(0..self.height)][0] = false;
         }
@@ -178,6 +173,8 @@ impl fmt::Display for Maze {
         for column in 0..self.width {
             if self.has_south_wall(self.height - 1, column) {
                 write!(f, "+---")?;
+            } else {
+                write!(f, "+   ")?;
             }
         }
         write!(f, "+")?;

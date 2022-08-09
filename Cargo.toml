@@ -33,6 +33,7 @@ rand_chacha = "0.3.1"
 version = "0.3.22"
 features = ["console"]
 
+# Enable WASM support for getrandom crate.
 [dependencies.getrandom]
 features = ["js"]
 
