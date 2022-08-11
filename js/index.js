@@ -44,10 +44,7 @@ const renderToPdf = (maze, fontSize) => {
   const text = maze.render();
   const xOffset = doc.internal.pageSize.width / 2;
   doc.text(text, xOffset, 10, null, null, "center");
-  doc.output('dataurlnewwindow');
-  // Also save, because for some reason Chrome will display blank page with huge
-  // mazes.
-  doc.save("maze.pdf");
+  doc.save(`maze-${maze.get_width()}x${maze.get_height()}.pdf`);
 };
 
 printButton.addEventListener("click", () => {
