@@ -4,19 +4,63 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Wasm Mazes</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   </head>
   <body>
-    <div>
-      <label for="width">Width:</label>
-      <input type="number" id="width" value="10"/>
-      <label for="height">Height:</label>
-      <input type="number" id="height" value="10"/>
-      <label for="seed">Seed:</label>
-      <input type="number" id="seed"/ value="1">
-      <button id="generate-btn">Generate</button>
+    <div class="container-sm mt-5">
+
+      <div class="mb-5">
+        <p class="text-left font-weight-normal">
+          Welcome to Wasm-Mazes!
+        </p>
+        <p class="text-left font-weight-normal">
+        Here you can generate mazes directly to pdf files and print them.<br>You can use one of the predefined difficulty settings or customise your own.
+        </p>
+        <p class="text-left font-weight-normal">
+        This maze generator uses WebAssembly written in Rust to generate mazes fully in your browser,<br> no server needed. If you are interested how this works, then check out the repository here <a href="https://github.com/Kazhuu/wasm-mazes" target=”_blank”>Kazhuu/wasm-mazes</a>.
+        <p class="text-left font-weight-normal">
+          Have fun!
+        </p>
+      </div>
+      <div class="mb-1">
+        <label class="form-label">Set Predefined Difficulty:</label>
+      </div>
+      <div class="btn-group mb-3">
+        <button class="btn btn-outline-primary" id="easy-btn">Easy</button>
+        <button class="btn btn-outline-primary" id="medium-btn">Medium</button>
+        <button class="btn btn-outline-primary" id="hard-btn">Hard</button>
+        <button class="btn btn-outline-primary" id="very-hard-btn">Very Hard</button>
+        <button class="btn btn-outline-primary" id="very-very-hard-btn">Very Very Hard</button>
+      </div>
+      <div>
+        <div class="mb-3">
+          <label class="form-label" for="width">Width:</label>
+          <input class="form-control" type="number" id="width" value="10"/>
+          <div class="form-text">Set width of the maze.</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="height">Height:</label>
+          <input class="form-control" type="number" id="height" value="10"/>
+          <div class="form-text">Set height of the maze.</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="seed">Seed:</label>
+          <input class="form-control" type="number" id="seed"/ value="1">
+          <div class="form-text">Seed to generate the maze. Same seed will always produce the same maze.</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="font-size">Font Size:</label>
+          <input class="form-control" type="number" id="font-size"/ value="5">
+          <div class="form-text">Set maze size for printing.</div>
+        </div>
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary" id="print-btn">Print</button>
+        </div>
+      </div>
     </div>
-    <pre id="pre"></pre>
+  </div>
+
     <script src="bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   </body>
 </html>
