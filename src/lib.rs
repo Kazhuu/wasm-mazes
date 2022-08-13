@@ -149,7 +149,7 @@ impl Maze {
 
 impl fmt::Display for Maze {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, " ")?;
+        write!(f, "  ")?;
         for column in 0..self.width {
             if self.has_north_wall(0, column) {
                 write!(f, "    ")?;
@@ -157,9 +157,13 @@ impl fmt::Display for Maze {
                 write!(f, " v  ")?;
             }
         }
-        write!(f, " \n")?;
+        write!(f, "  \n  ")?;
+        for _ in 0..self.width {
+            write!(f, "    ")?;
+        }
+        write!(f, "  \n")?;
         for row in 0..self.height {
-            write!(f, " ")?;
+            write!(f, "  ")?;
             for column in 0..self.width {
                 if self.has_north_wall(row, column) {
                     write!(f, "+---")?;
@@ -167,11 +171,11 @@ impl fmt::Display for Maze {
                     write!(f, "+   ")?;
                 }
             }
-            write!(f, "+ \n")?;
+            write!(f, "+  \n")?;
             if self.has_west_wall(row, 0) {
-                write!(f, " ")?;
+                write!(f, "  ")?;
             } else {
-                write!(f, ">")?;
+                write!(f, "> ")?;
             }
             for column in 0..self.width {
                 if self.has_west_wall(row, column) {
@@ -181,13 +185,13 @@ impl fmt::Display for Maze {
                 }
             }
             if self.has_east_wall(row, self.width - 1) {
-                write!(f, "| ")?;
+                write!(f, "|  ")?;
             } else {
-                write!(f, " <")?;
+                write!(f, "  <")?;
             }
             write!(f, "\n")?;
         }
-        write!(f, " ")?;
+        write!(f, "  ")?;
         for column in 0..self.width {
             if self.has_south_wall(self.height - 1, column) {
                 write!(f, "+---")?;
@@ -195,7 +199,11 @@ impl fmt::Display for Maze {
                 write!(f, "+   ")?;
             }
         }
-        write!(f, "+ \n")?;
+        write!(f, "+  \n  ")?;
+        for _ in 0..self.width {
+            write!(f, "    ")?;
+        }
+        write!(f, "  \n")?;
         for column in 0..self.width {
             if self.has_south_wall(self.height - 1, column) {
                 write!(f, "    ")?;
@@ -203,7 +211,7 @@ impl fmt::Display for Maze {
                 write!(f, "  ^ ")?;
             }
         }
-        write!(f, " ")?;
+        write!(f, "  ")?;
         Ok(())
     }
 }
